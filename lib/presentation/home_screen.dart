@@ -40,18 +40,21 @@ class _HomeScreenState extends State<HomeScreen> {
         leadingWidth: _width * 0.22,
         centerTitle: true,
         leading: Container(
-          color: AppColors.red,
-          child: Row(
-            children: [
-              Icon(
-                CupertinoIcons.person_alt_circle_fill,
-                size: _height * 0.03,
-              ),
-              SizedBox(
-                width: _width * .01,
-              ),
-              Text(widget.userName!)
-            ],
+          // color: AppColors.red,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Icon(
+                  CupertinoIcons.person_alt_circle_fill,
+                  size: _height * 0.04,
+                ),
+                SizedBox(
+                  width: _width * .01,
+                ),
+                Text(widget.userName!)
+              ],
+            ),
           ),
         ),
         title: Text(
@@ -69,23 +72,23 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Container(
-                  height: _height * 0.15,
+                  height: _height * 0.20,
                   decoration: BoxDecoration(
                       color: AppColors.red,
                       borderRadius: BorderRadius.circular(20)),
                 ),
               ),
               Container(
-                height: _height * 0.06,
+                height: _height * 0.07,
                 // color: AppColors.red,
                 child: Consumer<CategoryProvider>(
                     builder: (context, value, child) {
@@ -102,6 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         child: Container(
                           // borderOnForeground: true,
+                          // height: _height*0.2,
                           decoration: BoxDecoration(
                               color: AppColors.red,
                               borderRadius: BorderRadius.circular(8)),
@@ -121,9 +125,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Consumer<ProductProvider>(builder: (context, value, child) {
                 return GridView.builder(
-
+          
                     itemCount: value.productList.length,
-
+          
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

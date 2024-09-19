@@ -42,7 +42,7 @@ class _SignUpState extends State<SignUp> {
         height: _height,
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(16.0).copyWith(top: 10),
+            padding: const EdgeInsets.all(16.0).copyWith(top: 16),
             child: Form(
               key: formKey,
               child: SingleChildScrollView(
@@ -58,32 +58,38 @@ class _SignUpState extends State<SignUp> {
                     ),
                     SizedBox(
                       height: 73,
-                    ),
-                    Container(
-                      height: _height * 0.09,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadius.circular(8)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          cursorColor: AppColors.red,
-                          controller: nameController,
-                          decoration: InputDecoration(
-                            labelText: "Name",
-                            labelStyle: TextStyle(color: AppColors.darkGrey),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(left: 10),
-                          ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Enter Your Name';
-                            }
-                          },
-                        ),
+                     ),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        fillColor: AppColors.white,
+                        hintText: "Name"
                       ),
                     ),
+                    // Container(
+                    //   height: _height * 0.09,
+                    //   width: double.infinity,
+                    //   decoration: BoxDecoration(
+                    //       color: AppColors.white,
+                    //       borderRadius: BorderRadius.circular(8)),
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.all(8.0),
+                    //     child: TextFormField(
+                    //       cursorColor: AppColors.red,
+                    //       controller: nameController,
+                    //       decoration: InputDecoration(
+                    //         labelText: "Name",
+                    //         labelStyle: TextStyle(color: AppColors.darkGrey),
+                    //         border: InputBorder.none,
+                    //         contentPadding: EdgeInsets.only(left: 10),
+                    //       ),
+                    //       validator: (value) {
+                    //         if (value!.isEmpty) {
+                    //           return 'Enter Your Name';
+                    //         }
+                    //       },
+                    //     ),
+                    //   ),
+                    // ),
                     SizedBox(
                       height: 16,
                     ),
