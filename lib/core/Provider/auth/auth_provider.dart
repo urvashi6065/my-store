@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mystore/core/services/auth_service.dart';
-import 'package:mystore/presentation/home_screen.dart';
 
-class AthProvider with ChangeNotifier {
+
+
+import '../../../presentation/home/home_screen/home_screen.dart';
+import '../../services/auth_service.dart';class AthProvider with ChangeNotifier {
   late UserCredential userCredential;
   bool isLoading = false;
 

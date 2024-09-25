@@ -1,14 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mystore/presentation/home_screen.dart';
+
 import 'package:provider/provider.dart';
 
 
 import '../core/Provider/auth/auth_provider.dart';
 import '../core/constants/app_colors.dart';
 import '../core/constants/app_strings.dart';
+import '../dash_board/bottomNavigation.dart';
 import 'forgot_screen.dart';
+import 'home/home_screen/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -135,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (formKey.currentState!.validate()) {
                         print('object');
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => HomeScreen(userName:'',)));
+                            builder: (context) => BottomNavigation()));
                       }
                     },
                     child: Container(

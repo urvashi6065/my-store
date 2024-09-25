@@ -6,10 +6,11 @@ import 'package:mystore/core/constants/app_colors.dart';
 import 'package:mystore/core/constants/app_strings.dart';
 import 'package:mystore/core/services/api_service.dart';
 import 'package:mystore/models/product/product_model.dart';
+import 'package:mystore/presentation/profile/profile_screen/profile_screen.dart';
 
 import 'package:provider/provider.dart';
 
-import '../core/Provider/category/category_provider.dart';
+import '../../../core/Provider/category/category_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   final String? userName;
@@ -39,21 +40,31 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         leadingWidth: _width * 0.22,
         centerTitle: true,
-        leading: Container(
-          // color: AppColors.red,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Icon(
-                  CupertinoIcons.person_alt_circle_fill,
-                  size: _height * 0.04,
-                ),
-                SizedBox(
-                  width: _width * .01,
-                ),
-                Text(widget.userName!)
-              ],
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => ProfileScreen()));
+          },
+          child: Container(
+            // color: AppColors.red,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Icon(
+                    CupertinoIcons.person_alt_circle_fill,
+                    size: _height * 0.04,
+                  ),
+                  SizedBox(
+                    width: _width * .01,
+                  ),
+                  Text(
+                    widget.userName ?? "User",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -74,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(14.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -125,16 +136,17 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Consumer<ProductProvider>(builder: (context, value, child) {
                 return GridView.builder(
-          
+                    physics: NeverScrollableScrollPhysics(),
                     itemCount: value.productList.length,
-          
-                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisExtent: _height * 0.3,
                       crossAxisCount: 2,
                     ),
                     itemBuilder: (BuildContext context, int index) {
-                      return ProductCard(products: value.productList[index],);
+                      return ProductCard(
+                        products: value.productList[index],
+                      );
                     });
               })
               // Consumer<ProductProvider>(
